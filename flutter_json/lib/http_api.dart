@@ -22,7 +22,7 @@ class _HttpApiKullanimiState extends State<HttpApiKullanimi> {
           .map((e) => Post.fromJson(e))
           .toList();
     } else {
-      throw Exception("Baglanamadık ${response.statusCode}");
+      return null;
     }
   }
 
@@ -48,11 +48,9 @@ class _HttpApiKullanimiState extends State<HttpApiKullanimi> {
                       trailing: Text(snapshot.data[index].userId.toString()),
                     );
                   });
-            } else if (snapshot.error) {
-              return Text("Baglanamadık");
             } else {
               return Center(
-                child: CircularProgressIndicator(),
+                child: Text("yukleniyor"),
               );
             }
           }),
